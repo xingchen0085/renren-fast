@@ -18455,7 +18455,7 @@ function isObject(value) {
     return value === Object(value);
 }
 
-// generator related shims
+// gen related shims
 
 // FIXME: Remove this function once ES6 generators are in SpiderMonkey.
 function isStopIteration(exception) {
@@ -19341,7 +19341,7 @@ Promise.prototype.spread = function (fulfilled, rejected) {
 };
 
 /**
- * The async function is a decorator for generator functions, turning
+ * The async function is a decorator for gen functions, turning
  * them into asynchronous generators.  Although generators are only part
  * of the newest ECMAScript 6 drafts, this code does not cause syntax
  * errors in older engines.  This code should continue to work and will
@@ -19352,19 +19352,19 @@ Promise.prototype.spread = function (fulfilled, rejected) {
  * for longer, but under an older Python-inspired form.  This function
  * works on both kinds of generators.
  *
- * Decorates a generator function such that:
+ * Decorates a gen function such that:
  *  - it may yield promises
  *  - execution will continue when that promise is fulfilled
  *  - the value of the yield expression will be the fulfilled value
- *  - it returns a promise for the return value (when the generator
+ *  - it returns a promise for the return value (when the gen
  *    stops iterating)
  *  - the decorated function returns a promise for the return value
- *    of the generator or the first rejected promise among those
+ *    of the gen or the first rejected promise among those
  *    yielded.
- *  - if an error is thrown in the generator, it propagates through
+ *  - if an error is thrown in the gen, it propagates through
  *    every following yield until it is caught, or until it escapes
- *    the generator function altogether, and is translated into a
- *    rejection for the promise returned by the decorated generator.
+ *    the gen function altogether, and is translated into a
+ *    rejection for the promise returned by the decorated gen.
  */
 Q.async = async;
 function async(makeGenerator) {
@@ -19418,7 +19418,7 @@ function async(makeGenerator) {
 
 /**
  * The spawn function is a small wrapper around async that immediately
- * calls the generator and also ends the promise chain, so that any
+ * calls the gen and also ends the promise chain, so that any
  * unhandled errors are thrown instead of forwarded to the error
  * handler. This is useful because it's extremely common to run
  * generators at the top-level to work with libraries.
@@ -19430,14 +19430,14 @@ function spawn(makeGenerator) {
 
 // FIXME: Remove this interface once ES6 generators are in SpiderMonkey.
 /**
- * Throws a ReturnValue exception to stop an asynchronous generator.
+ * Throws a ReturnValue exception to stop an asynchronous gen.
  *
- * This interface is a stop-gap measure to support generator return
+ * This interface is a stop-gap measure to support gen return
  * values in older Firefox/SpiderMonkey.  In browsers that support ES6
- * generators like Chromium 29, just use "return" in your generator
+ * generators like Chromium 29, just use "return" in your gen
  * functions.
  *
- * @param value the return value for the surrounding generator
+ * @param value the return value for the surrounding gen
  * @throws ReturnValue exception with the value.
  * @example
  * // ES6 style
