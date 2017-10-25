@@ -122,9 +122,10 @@ public class GenUtils {
             Template tpl = Velocity.getTemplate(template, "UTF-8" );
             tpl.merge(context, sw);
 
+            String fileName = pathName + getFileName(template, tableEntity.getClassName(), config.getString("package" ), config.getString("moduleName" ));
+            FileUtils.createNewFile(fileName);
             try {
-                String fileName = pathName + getFileName(template, tableEntity.getClassName(), config.getString("package" ), config.getString("moduleName" ));
-                OutputStream os = new FileOutputStream(new File(fileName));
+                OutputStream os = new FileOutputStream(fileName);
                 os.write(sw.toString().getBytes());
                 os.flush();
                 os.close();

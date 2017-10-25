@@ -38,10 +38,10 @@
 
 		<!--wagon plugin 配置-->
 		<service-path>/work/renren</service-path>
-		<pack-name>${artifactId}-${version}.jar</pack-name>
+		<pack-name>${project.artifactId}-${project.version}.jar</pack-name>
 		<remote-addr>192.168.100.202:22</remote-addr>
-		<remote-username>tomcat</remote-username>
-		<remote-passwd>tomcat</remote-passwd>
+		<remote-username>root</remote-username>
+		<remote-passwd>123456</remote-passwd>
 	</properties>
 
 	<dependencies>
@@ -181,7 +181,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>${artifactId}</finalName>
+		<finalName>${project.artifactId}</finalName>
 		<extensions>
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
@@ -217,7 +217,7 @@
 						<command>pkill -f ${pack-name}</command>
 						<command>rm -f ${service-path}/renren.log</command>
 						<!-- Restart jar package，write result into renren.log -->
-						<command><![CDATA[nohup java -jar ${service-path}/${pack-name} --spring.profiles.active=test > ${service-path}/renren.log 2>&1 & ]]></command>
+						<command><![CDATA[nohup java -jar ${service-path}/${pack-name} --spring.profiles.active=dev > ${service-path}/renren.log 2>&1 & ]]></command>
 						<command><![CDATA[netstat -nptl]]></command>
 						<command><![CDATA[ps -ef | grep java | grep -v grep]]></command>
 					</commands>

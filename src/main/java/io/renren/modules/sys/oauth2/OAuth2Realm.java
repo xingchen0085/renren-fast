@@ -32,6 +32,10 @@ public class OAuth2Realm extends AuthorizingRealm {
 
     /**
      * 授权(验证权限时调用)
+     *  1. 获取策略
+     *  2. 用户登录
+     *  3. 获取用户权限列表
+     *  4. 设置授权信息
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {

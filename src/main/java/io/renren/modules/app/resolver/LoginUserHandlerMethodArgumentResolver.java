@@ -19,6 +19,11 @@ import org.springframework.web.method.support.ModelAndViewContainer;
  * @email sunlightcs@gmail.com
  * @date 2017-03-23 22:02
  */
+/**
+ * 有@LoginUser注解的方法参数，注入当前登录用户
+ * @author w.x.y
+ * @date 2017/10/24 16:15
+ */
 @Component
 public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
     @Autowired

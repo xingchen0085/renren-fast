@@ -4,7 +4,7 @@ server:
         uri-encoding: UTF-8
         max-threads: 1000
         min-spare-threads: 30
-    port: 8080
+    port: 80
     connection-timeout: 5000
     context-path: /renren-fast
 
@@ -24,7 +24,7 @@ spring:
     resources: # 指定静态资源的路径
         static-locations: classpath:/static/,classpath:/views/
     redis:
-        open: true  # 是否开启redis缓存  true开启   false关闭
+        open: false  # 是否开启redis缓存  true开启   false关闭
         database: 0
         host: 192.168.100.202
         port: 6379
@@ -47,7 +47,6 @@ renren:
         # 加密秘钥
         secret: f4e2e52034348f86b67cde581c0f9eb5[www.renren.io]
         # token有效时长，7天，单位秒
-        # expire: 604800
-        expire: 60
+        expire: 604800
         header: token
 
